@@ -1,0 +1,25 @@
+SRF2025 Conference Contributions Extraction Report
+============================================================
+Extraction time: 2025-09-29 20:29:00
+Source PDF: contributions.pdf
+Total contributions: 278
+Sessions: 16
+
+Session breakdown:
+----------------------------------------
+MOA: Monday Opening and Awards (5 contributions)
+MOP: Monday Poster Session (71 contributions)
+TUP: Tuesday Poster Session (72 contributions)
+WEB: Wednesday Oral Session B (7 contributions)
+THP: Thursday Poster Session (71 contributions)
+MOB: Monday Oral Session B (6 contributions)
+TUA: Tuesday Oral Session A (6 contributions)
+TUB: Tuesday Oral Session B (7 contributions)
+FRB: Friday Oral Session B (5 contributions)
+THA: Thursday Oral Session A (6 contributions)
+FRA: Friday Oral Session A (6 contributions)
+WEA: Wednesday Oral Session A (6 contributions)
+THB: Thursday Oral Session B (7 contributions)
+HT1: Session HT1 (1 contributions)
+HT2: Session HT2 (1 contributions)
+KEY: Session KEY (1 contributions)
