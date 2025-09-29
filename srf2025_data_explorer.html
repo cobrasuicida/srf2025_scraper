@@ -158,6 +158,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .contribution-card::before {
@@ -391,6 +392,181 @@
                 opacity: 0.8;
             }
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header .contribution-code {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .close:hover {
+            opacity: 1;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .detail-section {
+            margin-bottom: 25px;
+        }
+
+        .detail-section h3 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+
+        .detail-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .meta-item {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 12px 16px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .meta-item strong {
+            color: #667eea;
+        }
+
+        .detail-abstract {
+            line-height: 1.6;
+            color: #555;
+            background: rgba(0, 0, 0, 0.02);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .detail-authors,
+        .detail-presenter {
+            background: rgba(76, 175, 80, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .modal-footer {
+            padding: 20px 30px;
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 0 0 20px 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: #666;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: #667eea;
+            color: #667eea;
+        }
     </style>
 </head>
 
@@ -612,6 +788,9 @@
                 </div>
             `;
 
+            // Add click event listener to open modal
+            card.addEventListener('click', () => openModal(contribution));
+
             return card;
         }
 
@@ -694,6 +873,78 @@
             renderContributions();
         }
 
+        function openModal(contribution) {
+            // Populate modal with contribution data
+            document.getElementById('modal-title').textContent = contribution.title;
+            document.getElementById('modal-code').textContent = contribution.contribution_code;
+            document.getElementById('modal-session').textContent = contribution.session_name;
+            document.getElementById('modal-type').textContent = contribution.type || 'Not specified';
+            document.getElementById('modal-datetime').textContent = contribution.date_time || 'Not specified';
+            document.getElementById('modal-id').textContent = contribution.contribution_id;
+            document.getElementById('modal-abstract').textContent = contribution.abstract || 'No abstract available';
+
+            // Extract and display authors and presenters from footnotes
+            const authorsSection = document.getElementById('modal-authors-section');
+            const authorsDiv = document.getElementById('modal-authors');
+            const presenterDiv = document.getElementById('modal-presenter');
+
+            if (contribution.footnotes) {
+                const authorMatch = contribution.footnotes.match(/Author:\s*([^(\n]+)/);
+                const presenterMatch = contribution.footnotes.match(/Presenter:\s*([^(\n]+)/);
+
+                if (authorMatch) {
+                    authorsDiv.innerHTML = `<strong>Author:</strong> ${authorMatch[1].trim()}`;
+                    authorsDiv.style.display = 'block';
+                } else {
+                    authorsDiv.style.display = 'none';
+                }
+
+                if (presenterMatch) {
+                    presenterDiv.innerHTML = `<strong>Presenter:</strong> ${presenterMatch[1].trim()}`;
+                    presenterDiv.style.display = 'block';
+                } else {
+                    presenterDiv.style.display = 'none';
+                }
+
+                if (!authorMatch && !presenterMatch) {
+                    authorsSection.style.display = 'none';
+                } else {
+                    authorsSection.style.display = 'block';
+                }
+            } else {
+                authorsSection.style.display = 'none';
+            }
+
+            // Set JACoW Indico link
+            const jacowLink = document.getElementById('jacow-link');
+            // Use contribution_code for searching since contribution_id doesn't match JACoW's ID system
+            jacowLink.href = `https://indico.jacow.org/event/89/contributions/?q=${contribution.contribution_code}`;
+
+            // Show modal
+            document.getElementById('detail-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            document.getElementById('detail-modal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function (event) {
+            const modal = document.getElementById('detail-modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
         // Event listeners
         document.getElementById('search-input').addEventListener('input', applyFilters);
         document.getElementById('session-filter').addEventListener('change', applyFilters);
@@ -705,6 +956,51 @@
         // Load data when page loads
         loadData();
     </script>
+
+    <!-- Modal for detailed view -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Contribution Details</h2>
+                <div class="contribution-code" id="modal-code"></div>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="detail-section">
+                    <div class="detail-meta">
+                        <div class="meta-item">
+                            <strong>Session:</strong> <span id="modal-session"></span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>Type:</strong> <span id="modal-type"></span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>Date/Time:</strong> <span id="modal-datetime"></span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>Contribution ID:</strong> <span id="modal-id"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Abstract</h3>
+                    <div class="detail-abstract" id="modal-abstract"></div>
+                </div>
+
+                <div class="detail-section" id="modal-authors-section">
+                    <h3>Authors & Presenters</h3>
+                    <div class="detail-authors" id="modal-authors"></div>
+                    <div class="detail-presenter" id="modal-presenter"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a id="jacow-link" href="#" target="_blank" class="modal-btn btn-primary">Search on JACoW Indico</a>
+                <button onclick="closeModal()" class="modal-btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
